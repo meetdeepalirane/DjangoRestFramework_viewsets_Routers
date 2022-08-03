@@ -21,37 +21,7 @@ Flow:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Steps for Authentication and permissions:
+_**Steps for Authentication and permissions:**_
 
 1. Go to settings and paste below lines
      REST_FRAMEWORK={
@@ -70,4 +40,18 @@ Steps for Authentication and permissions:
    3. http http://localhost:8000/bookapi/book_app/ "Authorization: Token 1719ff2ecdee155492af0d4b132dc2df51563f35"
    
 6. Successful!!!!
+
+Note:Instead of writing DEFAULT_PERMISSION_CLASSES and DEFAULT_AUTH_CLASSES in setting you can write it in 
+viewsets.
    
+
+_**Steps for Filtering_** 
+1. pip install django-filter
+2. add in installed apps----- 'django_filters'
+3. settings.py
+   REST_FRAMEWORK={
+    'DEFAULT_FILTER_BACKENDS':('django_filters.rest_framework.DjangoFilterBackend',)}
+4. In viewsets
+   1. create bookfilter(filters.FilterSet):
+   2. Include fields of filter
+5. In BookViewSet , set filterset_class=bookfilter
